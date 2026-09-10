@@ -1,0 +1,13 @@
+
+@TasKManagementAPI_HostAddress = http://localhost:5239
+
+POST {{TasKManagementAPI_HostAddress}}/api/users
+Content-Type: application/json
+{
+  "username": "Dharok",
+  "password": "crypt",
+  "email" : "gielinor@gmail.com"
+}
+
+
+
