@@ -24,7 +24,7 @@ function LoginPage({setTokenProp}) {
             setTokenProp(token)
             console.log(`Token is: ${token}`)
 
-            navigate("/task")
+            navigate("/projects")
         }
          
         else
@@ -45,11 +45,11 @@ function LoginPage({setTokenProp}) {
                 }} >
                     <div className="IndividualFormContainer">
                         <h2>Username</h2>
-                        <input type="text" placeholder="Username" onChange={(event) => setUsername(event.target.value) } />
+                        <input className="Input" type="text" placeholder="Username" onChange={(event) => setUsername(event.target.value) } />
                     </div>
                     <div className="IndividualFormContainer">
                         <h2>Password</h2>
-                        <input type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)} />
+                        <input className="Input" type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)} />
                     </div>
 
                     <input type="submit" placeholder="Submit" className="Submit" />

@@ -3,7 +3,8 @@ import AuthenticationPage from './Pages/AuthenticationPage';
 import CreateAccountPage from './Pages/CreateAccountPage';
 import LoginPage from './Pages/LoginPage';
 import { useState } from 'react';
-import  TaskPage  from './Pages/TaskPage';
+import TaskPage from './Pages/TaskPage';
+import ProjectsPage from './Pages/ProjectsPage'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/" element={<AuthenticationPage />} />
                 <Route path="/create" element={<CreateAccountPage />} />
                 <Route path="/login" element={<LoginPage setTokenProp={setToken} />} />
+                <Route path="/projects" element={<ProjectsPage tokenProp={token} />} />
                 <Route path="/task" element={<TaskPage tokenProp={token} />} />
             </Routes>
         </div>

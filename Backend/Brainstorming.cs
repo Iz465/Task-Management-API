@@ -2,12 +2,15 @@
 {
     public class Brainstorming
     {
-        // Task Page
-        // Needs to have tasks shown. and format those tasks in sections: 
-        // not started tasks
-        // in progress tasks
-        // finished tasks
-        // over due tasks - maybe make this uh just colorued red or something in the in progress or not started section.
+        // Add Projects Page
+        // Contains:
+        // Create Project Button - opens form for making one
+        // All the projects beloging to the user. 
+     
+
+
+  
+       
 
 
 

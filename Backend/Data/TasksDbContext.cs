@@ -11,5 +11,7 @@ namespace TaskManagementApi.Backend.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Projects> Projects { get; set; }
+        public DbSet<Tasks> Tasks { get; set; }
     }
 }

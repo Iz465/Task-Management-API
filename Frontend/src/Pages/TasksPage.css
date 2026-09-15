@@ -2,13 +2,69 @@
 .TasksContainer {
     display: flex;
     justify-content: space-around;
-    
+    align-items: center;
+  
+}
+
+.NotStartedContainer {
+    display: flex;
+    justify-content:space-around;
+    align-items: start;
 }
 
 .TaskButton {
-   
     font-size: 2em;
     font-weight: bold;
-    background-color: rgb(128, 128, 128, .2);
     border: none;
+    background-color: #16171d;
+    color: whitesmoke;
+}
+
+.IndividualTaskContainer {
+    border: solid #6C63A8 10px;
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 50vh;
+    min-width: 15vw;
+    max-width: 20vw;
+    background-color: #403676;
+}
+
+.AddTaskContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 40%;
+    min-height: 40%;
+    border: solid #6C63A8 10px;
+    border-radius: 10px;
+    background-color: #403676;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.AddTaskContainer form { 
+    display: contents;
+ 
+
+}
+
+.AddTaskTitleClose {
+    display: flex;
+    justify-content: center;
+}
+
+.AddTaskTitleClose button {
+    position: absolute;
+    right: 10%;
+}
+
+.ExitButton {
+    font-size: 1.5em;
+    font-weight: bold;
+    border: none;
+    background-color: #16171d;
+    color: whitesmoke;
 }

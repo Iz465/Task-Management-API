@@ -22,7 +22,7 @@ function CreateAccountPage() {
 
             console.log(`token: ${await isCreated.text()}`)
             setMessage("Account Created") 
-            navigate("/task")
+            navigate("/projects")
         }
           
         else
