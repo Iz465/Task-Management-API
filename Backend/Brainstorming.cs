@@ -2,13 +2,12 @@
 {
     public class Brainstorming
     {
-        // Task Management Api
-        // Add controllers - User controllers first.
-        //  Add user services
-        // Add user Interface
-        // Add user model & dtos
-        // Set up http file to check requests work
-        // Create Database and migrate user table.
+        // Task Page
+        // Needs to have tasks shown. and format those tasks in sections: 
+        // not started tasks
+        // in progress tasks
+        // finished tasks
+        // over due tasks - maybe make this uh just colorued red or something in the in progress or not started section.
 
 
 

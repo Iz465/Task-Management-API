@@ -1,19 +1,39 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TaskManagementApi.Backend.Data;
 using TaskManagementApi.Backend.Interfaces;
 using TaskManagementApi.Backend.Services;
+using TaskManagementApi.Backend.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IUser, UserServices>();
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
-Console.WriteLine($"Environment: {builder.Environment.EnvironmentName}");
-Console.WriteLine($"Content Root: {builder.Environment.ContentRootPath}");
-Console.WriteLine($"Config file exists: {File.Exists("appsettings.json")}");
+var secretKey = builder.Configuration["JWT:SecretKey"];
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options => // configuring the jwt options for what inside of the token needs to be validated.
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true, // this makes it so the server checks the jwt signature is valid.
 
-Console.WriteLine($"Connection string: '{connectionString}'");
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(secretKey ??            // the secret key to check the signature
+                throw new InvalidOperationException("JWT secret key is missing."))
+
+            ),
+            ValidateLifetime = true, // checks the jwt token hasn't expired.
+            ValidateAudience = false,
+            ValidateIssuer = false // both this ValidateIssuer & ValidateAudience need to be set to false here or it gives errors.
+        };
+    });
+
 
 // Add services to the container.
 
@@ -25,6 +45,15 @@ builder.Services.AddDbContext<TasksDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
+builder.Services.AddCors(options => // allows back end and frontend to be on different ports.
+{
+    options.AddPolicy("AllowReactFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:58796")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -35,7 +64,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowReactFrontend");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

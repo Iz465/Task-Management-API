@@ -1,6 +1,6 @@
 <Solution>
   <Project Path="Backend/TaskManagementApi-Backend.csproj" />
-  <Project Path="TaskManagementApi-FrontEnd/taskmanagementapi-frontend.esproj">
+  <Project Path="Frontend/Taskmanagementapi-Frontend.esproj">
     <Build />
     <Deploy />
   </Project>

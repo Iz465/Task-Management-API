@@ -1,0 +1,14 @@
+
+.TasksContainer {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.TaskButton {
+   
+    font-size: 2em;
+    font-weight: bold;
+    background-color: rgb(128, 128, 128, .2);
+    border: none;
+}
