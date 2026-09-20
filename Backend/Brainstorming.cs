@@ -2,10 +2,8 @@
 {
     public class Brainstorming
     {
-        // Add Projects Page
-        // Contains:
-        // Create Project Button - opens form for making one
-        // All the projects beloging to the user. 
+        // Task Page
+
      
 
 

@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IUser, UserServices>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<IProject, ProjectServices>();
+builder.Services.AddScoped<ITasks, TaskServices>();
 
 var secretKey = builder.Configuration["JWT:SecretKey"];
 

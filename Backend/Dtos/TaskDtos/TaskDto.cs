@@ -1,13 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TaskManagementApi.Backend.Enums;
 
-namespace TaskManagementApi.Backend.Models
+namespace TaskManagementApi.Backend.Dtos.TaskDtos
 {
-    public class Tasks
+    public class TaskDto
     {
-        [Required]
-        public int Id { get; set; }
-
         [Required]
         public string Name { get; set; } = string.Empty;
 
@@ -17,8 +14,8 @@ namespace TaskManagementApi.Backend.Models
         [Required]
         public ETasks Status { get; set; }
 
-        [Required]
-        public int ProjectId { get; set; }
+      
+
 
     }
 }

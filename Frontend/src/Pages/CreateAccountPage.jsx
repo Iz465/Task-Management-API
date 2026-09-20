@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 
 
-function CreateAccountPage() {
+function CreateAccountPage({ setTokenProp }) {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState ("") 
@@ -15,12 +15,15 @@ function CreateAccountPage() {
     async function CreateUser() {
 
         console.log(`Username: ${username}`)
-        const isCreated = await createUser(username, password, email)
+        const response = await createUser(username, password, email)
        
 
-        if (isCreated.ok) { 
+        if (response.ok) { 
 
-            console.log(`token: ${await isCreated.text()}`)
+            const token = await response.text()
+            console.log(`token: ${token}`)
+            
+            setTokenProp(token)
             setMessage("Account Created") 
             navigate("/projects")
         }

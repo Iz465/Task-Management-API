@@ -33,5 +33,32 @@ namespace TaskManagementApi.Backend.Services
 
             return EUserCreation.Created;
         }
+
+        public async Task<List<ProjectDto>> GetProjects(int userId)
+        {
+            IQueryable<Projects> query = _context.Projects.AsQueryable();
+
+            query = query.Where(project => project.UserId == userId);
+
+            return await query.Select(project => new ProjectDto
+            {
+                Id = project.Id,
+                Name = project.Name
+            }).ToListAsync();
+        }
+
+        public async Task<ProjectDto> GetProject(int projectId)
+        {
+            var projectExists = await _context.Projects.FindAsync(projectId);
+            if (projectExists == null)
+                return null;
+            
+
+            return new ProjectDto
+            {
+                Id = projectExists.Id,
+                Name = projectExists.Name
+            };
+        }
     }
 }
