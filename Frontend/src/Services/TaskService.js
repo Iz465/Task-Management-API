@@ -29,3 +29,21 @@ export async function addTask(token, projectId, name, dueDate)
     
     return response
 }
+
+export async function updateTask(token, status, taskId)
+{
+    const response = await fetch("http://localhost:5239/api/tasks", {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify({
+            id: taskId,
+            status: status
+        })
+    })
+
+    return response
+
+}

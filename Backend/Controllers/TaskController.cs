@@ -40,5 +40,17 @@ namespace TaskManagementApi.Backend.Controllers
             
             return await _taskServices.GetTasks(projectId);
         }
+
+        [HttpPut]
+        [Authorize]
+        public async Task<ActionResult> UpdateTask(UpdateTaskDto dto)
+        {
+            var response = await _taskServices.UpdateTask(dto);
+
+            if(response == EUserCreation.Incorrect)
+                return NotFound();
+
+            return Ok();
+        }
     }
 }

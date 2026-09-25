@@ -2,8 +2,9 @@
 .TasksContainer {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     align-items: center;
-  
+   
 }
 
 .NotStartedContainer {
@@ -31,10 +32,14 @@
     border: solid #6C63A8 10px;
     border-radius: 10px;
     padding: 20px;
-    min-height: 50vh;
-    min-width: 15vw;
-    max-width: 20vw;
+    width: 300px;
+    height: 500px;
     background-color: #403676;
+    display:grid;
+    grid-template-rows: .2fr 1fr;
+    margin:20px;
+
+   
 }
 
 .AddTaskContainer {
@@ -71,4 +76,20 @@
 
 .ExitButton {
     padding: 5px 10px;
+}
+
+.IndividualTasks{
+    display:grid;
+    grid-template-columns: 2fr .5fr .5fr;
+    text-align:start;
+    align-items:center;
+    max-width:90%;
+    margin-left:auto;
+}
+
+.IndividualTasks button{
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 20px;
+    
 }

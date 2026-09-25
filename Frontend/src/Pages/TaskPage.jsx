@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import './TasksPage.css'
 import '../DefaultCss.css'
 import { getProject } from '../Services/ProjectService';
-import { addTask, getTasks } from "../Services/TaskService";
+import { addTask, getTasks, updateTask } from "../Services/TaskService";
 
 
 function TaskPage({ tokenProp, projectId }) {
@@ -13,6 +13,7 @@ function TaskPage({ tokenProp, projectId }) {
     const [name, setName] = useState("")
     const [dueDate, setDueDate] = useState("")
     const [tasks, setTasks] = useState([])
+    const [taskId, setTaskId] = useState()
   
     useEffect(() => { 
 
@@ -55,6 +56,14 @@ function TaskPage({ tokenProp, projectId }) {
 
     }
 
+    async function UpdateTask(status, taskId) {
+        console.log(`Updating Task: ${taskId}`)
+        await updateTask(tokenProp, status, taskId)
+     
+        const response = await getTasks(tokenProp, projectId)
+        if (response.ok)
+            setTasks(await response.json())
+    } 
 
  
 
@@ -71,37 +80,52 @@ function TaskPage({ tokenProp, projectId }) {
                         <h2 className="MediumFont">Not Started</h2>
                         <button className="TaskButton GreyHover" onClick={() => setAddingTask(true)} > + </button>
                     </div>
-                    {tasks.map(task => (
-                        task.status == 0 && (
-                         < div key = { task.name } >
-                        <p>{task.name}</p>
-                        </div>
-                        )
-                       
-                    ))}
+                    <div onDragOver={(e) => e.preventDefault()} onDrop={() => UpdateTask("Not Started", taskId)}>
+                        {tasks.map(task => (
+                            task.status == 0 && (
+                                <div key={task.id} className="IndividualTasks" draggable={"true"}
+                                    onDragEnter={() => setTaskId(task.id)}>
+                                    <p>{task.name}</p>
+                                    <button style={{ backgroundColor: 'green' }} className="DarkPurpleHover"
+                                        onClick={() => UpdateTask("InProgress", task.id)} >+</button>
+                                    <button style={{ backgroundColor: 'darkred' }} className="DarkPurpleHover" >x</button>
+                                </div>
+                            )
+                        ))}
+                    </div>
+                  
                 </div>
 
                 <div className="IndividualTaskContainer">
                     <h2 className="MediumFont">In Progress</h2>
-                    {tasks.map(task => (
-                        task.status == 1 && (
-                            < div key={task.name}>
-                                <p>{task.name}</p>
-                            </div>
-                            
+                    <div onDragOver={(e) => e.preventDefault()} onDrop={() => UpdateTask("InProgress", taskId)} >
+                        {tasks.map(task => (
+                            task.status == 1 && (
+                                <div key={task.id} className="IndividualTasks" draggable={"true"}
+                                    onDragEnter={() => setTaskId(task.id)} >
+                                    <p>{task.name}</p>
+                                    <button style={{ backgroundColor: 'green' }} className="DarkPurpleHover"
+                                        onClick={() => UpdateTask("Complete", task.id)} >+</button>
+                                    <button style={{ backgroundColor: 'darkred' }} className="DarkPurpleHover" >x</button>
+                                </div>    
                         )
-                    ))}
+                        ))}
+                    </div>
                 </div>
 
                 <div className="IndividualTaskContainer">
                     <h2 className="MediumFont">Finished</h2>
-                    {tasks.map(task => (
-                        task.status == 2 && (
-                            <div key={task.name}>
-                                <p>{task.name}</p>
-                            </div>
+                    <div onDragOver={(e) => e.preventDefault()} onDrop={() => UpdateTask("Complete", taskId)} >
+                        {tasks.map(task => (
+                            task.status == 2 && (
+                                <div key={task.id} className="IndividualTasks" draggable={"true"}
+                                    onDragEnter={() => setTaskId(task.id)}>
+                                    <p>{task.name}</p>
+                                    <button style={{ backgroundColor: 'darkred' }} className="DarkPurpleHover" >x</button>
+                                </div>
                         )
-                    ))}
+                        ))}
+                    </div>
                 </div>
                
             </div>

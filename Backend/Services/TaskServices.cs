@@ -23,6 +23,7 @@ namespace TaskManagementApi.Backend.Services
 
             return await query.Select(task => new TaskDto
             {
+                Id = task.Id,
                 Name = task.Name,
                 DueDate = task.DueDate,
                 Status = task.Status
@@ -47,6 +48,24 @@ namespace TaskManagementApi.Backend.Services
             await _context.SaveChangesAsync();
 
 
+            return EUserCreation.Created;
+        }
+
+        public async Task<EUserCreation> UpdateTask(UpdateTaskDto dto)
+        {
+            var task = await _context.Tasks.FindAsync(dto.Id);
+            if (task == null)
+                return EUserCreation.Incorrect;
+
+            switch(dto.Status)
+            {
+                case "InProgress": task.Status = ETasks.InProgress; break;
+                case "Complete": task.Status = ETasks.Complete;  break;
+                case "Not Started": task.Status = ETasks.NotStarted; break;
+                default: return EUserCreation.Incorrect;
+            }
+
+            await _context.SaveChangesAsync();
             return EUserCreation.Created;
         }
 

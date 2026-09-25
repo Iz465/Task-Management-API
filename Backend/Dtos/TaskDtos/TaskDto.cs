@@ -6,6 +6,9 @@ namespace TaskManagementApi.Backend.Dtos.TaskDtos
     public class TaskDto
     {
         [Required]
+        public int Id { get; set; }
+
+        [Required]
         public string Name { get; set; } = string.Empty;
 
         [Required]

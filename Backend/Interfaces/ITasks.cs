@@ -6,7 +6,9 @@ namespace TaskManagementApi.Backend.Interfaces
     public interface ITasks
     {
         Task<List<TaskDto>> GetTasks(int projectId);
-
         Task<EUserCreation> CreateTask(CreateTaskDto dto);
+        Task<EUserCreation> UpdateTask(UpdateTaskDto dto);
+
+
     }
 }
