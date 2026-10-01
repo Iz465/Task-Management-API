@@ -2,18 +2,21 @@
 {
     public class Brainstorming
     {
-        // Task Page
+    
 
      
+        // Fix the css so it looks 
 
+        // Then i should add in the timer functionality
+
+        // After this add in an option to delete projects
 
   
        
 
 
 
-        // Later on add requests for viewing different tasks 
-        // timers based on whether tasks are complete or not
+
 
 
 

@@ -8,7 +8,7 @@ function LoginPage() {
   
     return (
         <div className="PageContainer">
-            <h1 className="Title">Welcome To Task Management</h1>
+            <h1 className="Title"  >Welcome To Task Stuff</h1>
             <div className="buttonContainer">
                 <Link to="/create"><button className="LargeButton GreyHover">Create Account</button></Link>
                 <Link to="/login"><button className="LargeButton GreyHover">Login</button></Link>

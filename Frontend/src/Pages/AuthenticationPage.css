@@ -6,5 +6,7 @@
     margin-right:auto;
     min-width: 60%;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10vw;
 }
 

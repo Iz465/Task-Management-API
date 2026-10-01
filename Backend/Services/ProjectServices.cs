@@ -18,7 +18,7 @@ namespace TaskManagementApi.Backend.Services
 
         public async Task<EUserCreation> CreateProject(CreateProjectDto dto, int userId)
         {
-            var exists = await _context.Projects.AnyAsync(project => project.Name == dto.Name);
+            var exists = await _context.Projects.AnyAsync(project => project.Name == dto.Name && project.UserId == userId);
             if (exists)
                 return EUserCreation.Conflict;
 

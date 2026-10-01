@@ -12,20 +12,23 @@ body {
 
 p {
     color: whitesmoke;
-    font-weight: 400;
+    font-weight: 100;
 }
 
 h2 {
     color: whitesmoke;
-    font-weight: 650;
+    font-weight: 100;
+}
+
+h1 {
+    line-height: 5vh;
 }
 
 button {
     background-color: #6C63A8;
-    color: black;
     border-radius: 5px;
     border: none;
-    font-weight: 650;
+    cursor: pointer;
     padding: 20px;
 }
 
@@ -38,16 +41,20 @@ button {
 
 .PageContainer {
     min-height: 60vh;
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
 }
 
 .LargeButton {
     padding: 15px;
     border-radius: 5px;
     font-size: clamp(1rem, 3vw, 2.5rem);
-    border:none;
+    border: none;
+    font-weight: 100;
+    color: whitesmoke;
 }
 
 .GreyHover:hover {
@@ -62,6 +69,7 @@ button {
 .FormContainer {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 
 }
 
@@ -70,10 +78,11 @@ button {
     width: 35%;
     margin-left: auto;
     margin-right: auto;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 120px 1fr;
     text-align:left;
     align-items:center;
     padding:20px;
+    grid-gap: 5vw;
 }
 
 .Input {
@@ -82,7 +91,6 @@ button {
 }
 
 .Submit {
-    width: 10%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;
@@ -93,4 +101,72 @@ button {
 .MediumFont {
     font-size: 2em;
 }
+
+.SideContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 50vh;
+    width: 150px;
+    flex-shrink: 0;
+}
+
+.SideBorder {
+    position: fixed;
+
+    width: 150px;
+    height: 100%;
+    border-right: solid 2px #b8b6c8;
+}
+
+
+.Sidebar {
+
+  
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+
+}
+
+.Sidebar h2 {
+    color: #b8b6c8;
+}
+
+@media (max-width: 700px) {
+    .Sidebar {
+        display: none;
+    }
+    .SideBorder{
+        display: none;
+    }
+    .SideContainer{
+        display:none;
+    }
+}
+
+.TopContainer {
+    position: sticky;
+
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(108, 99, 168, .1);
+    padding:10px;
+    border-bottom: solid 1px #b8b8ba;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.TopContainer p {
+    margin-right: 30px;
+    color: #b8b6c8;
+}
+
+.IndividualTopContainer {
+    display:flex;
+    flex-shrink: 0;
+
+}
+
+
 

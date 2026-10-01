@@ -47,3 +47,12 @@ export async function updateTask(token, status, taskId)
     return response
 
 }
+
+export async function deleteTask(token, taskId) {
+
+    await fetch(`http://localhost:5239/api/tasks/${taskId}`, {
+        method: 'DELETE',
+        headers: {'Authorization': `Bearer ${token}`}
+    })
+
+}

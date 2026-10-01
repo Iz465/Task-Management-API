@@ -8,7 +8,7 @@ namespace TaskManagementApi.Backend.Dtos.TaskDtos
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        public string DueDate { get; set; } = string.Empty;
+        public DateTime DueDate { get; set; } 
 
         [Required]
         public int ProjectId { get; set; }

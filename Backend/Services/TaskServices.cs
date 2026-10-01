@@ -69,5 +69,17 @@ namespace TaskManagementApi.Backend.Services
             return EUserCreation.Created;
         }
 
+        public async Task<EUserCreation> DeleteTask(int id)
+        {
+            var taskExists = await _context.Tasks.FindAsync(id);
+            if (taskExists == null)
+                return EUserCreation.Incorrect;
+
+            _context.Remove(taskExists);
+            await _context.SaveChangesAsync();
+            return EUserCreation.Created;
+
+        }
+       
     }
 }

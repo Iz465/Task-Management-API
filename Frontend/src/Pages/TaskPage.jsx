@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import './TasksPage.css'
 import '../DefaultCss.css'
 import { getProject } from '../Services/ProjectService';
-import { addTask, getTasks, updateTask } from "../Services/TaskService";
+import { addTask, getTasks, updateTask, deleteTask } from "../Services/TaskService";
 
 
 function TaskPage({ tokenProp, projectId }) {
@@ -53,6 +53,7 @@ function TaskPage({ tokenProp, projectId }) {
         response = await getTasks(tokenProp, projectId)
         if (response.ok) 
             setTasks(await response.json())
+        setDueDate("")
 
     }
 
@@ -64,6 +65,14 @@ function TaskPage({ tokenProp, projectId }) {
         if (response.ok)
             setTasks(await response.json())
     } 
+
+    async function DeleteTask(taskId) {
+        await deleteTask(tokenProp, taskId)
+
+        const response = await getTasks(tokenProp, projectId)
+        if (response.ok)
+            setTasks(await response.json())
+    }
 
  
 
@@ -86,9 +95,10 @@ function TaskPage({ tokenProp, projectId }) {
                                 <div key={task.id} className="IndividualTasks" draggable={"true"}
                                     onDragEnter={() => setTaskId(task.id)}>
                                     <p>{task.name}</p>
-                                    <button style={{ backgroundColor: 'green' }} className="DarkPurpleHover"
-                                        onClick={() => UpdateTask("InProgress", task.id)} >+</button>
-                                    <button style={{ backgroundColor: 'darkred' }} className="DarkPurpleHover" >x</button>
+                                 
+                                    <button style={{ backgroundColor: 'darkred' }} className="DarkPurpleHover"
+                                        onClick={() => DeleteTask(task.id)} >🗑</button>
+                                    <p>07/10/26 ⏳</p>
                                 </div>
                             )
                         ))}
@@ -104,10 +114,13 @@ function TaskPage({ tokenProp, projectId }) {
                                 <div key={task.id} className="IndividualTasks" draggable={"true"}
                                     onDragEnter={() => setTaskId(task.id)} >
                                     <p>{task.name}</p>
-                                    <button style={{ backgroundColor: 'green' }} className="DarkPurpleHover"
-                                        onClick={() => UpdateTask("Complete", task.id)} >+</button>
-                                    <button style={{ backgroundColor: 'darkred' }} className="DarkPurpleHover" >x</button>
+                                   
+                                    <button style={{ backgroundColor: 'darkred' }} className="DarkPurpleHover"
+                                        onClick={() => DeleteTask(task.id)} >🗑</button>
+
+                                    <p>07/10/26 🔴</p>
                                 </div>    
+
                         )
                         ))}
                     </div>
@@ -121,7 +134,8 @@ function TaskPage({ tokenProp, projectId }) {
                                 <div key={task.id} className="IndividualTasks" draggable={"true"}
                                     onDragEnter={() => setTaskId(task.id)}>
                                     <p>{task.name}</p>
-                                    <button style={{ backgroundColor: 'darkred' }} className="DarkPurpleHover" >x</button>
+                                    <button style={{ backgroundColor: 'darkred' }} className="DarkPurpleHover"
+                                        onClick={() => DeleteTask(task.id)} >🗑</button>
                                 </div>
                         )
                         ))}

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.VisualBasic;
+using System.ComponentModel.DataAnnotations;
 using TaskManagementApi.Backend.Enums;
 
 namespace TaskManagementApi.Backend.Models
@@ -12,7 +13,7 @@ namespace TaskManagementApi.Backend.Models
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        public string DueDate { get; set; } = string.Empty;
+        public DateTime DueDate { get; set; }
 
         [Required]
         public ETasks Status { get; set; }

@@ -52,5 +52,17 @@ namespace TaskManagementApi.Backend.Controllers
 
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        [Authorize]
+        public async Task<ActionResult> DeleteTask(int id)
+        {
+            var response = await _taskServices.DeleteTask(id);
+
+            if (response == EUserCreation.Incorrect)
+                return NotFound("Can't Delete Task");
+
+            return Ok();
+        }
     }
 }

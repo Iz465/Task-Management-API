@@ -30,6 +30,9 @@ function ProjectsPage({ tokenProp, setProjectId }) {
     async function SubmitProject()
     { 
         await addProject(name, tokenProp)  
+        const response = await getProjects(tokenProp)
+        if (response)
+            setProjects(await response.json())
 
     }
 
@@ -44,10 +47,20 @@ function ProjectsPage({ tokenProp, setProjectId }) {
                 setName={setName}
                 SubmitProject={SubmitProject}
             />
-            <h1 className="Title">Projects</h1>
+    
+            <div className="TestTitle">
+                <h1>Projects</h1>
+                <button
+                    className="GreyHover AddProjectButton"
+                    onClick={() => setAddingProject(true)}
+                >
+                    +
+                </button>
+            </div>
 
-          
-            <button className="GreyHover AddProjectButton" onClick={() => setAddingProject(true)} >Add Project</button>
+        
+      
+            
        
        
 
@@ -58,7 +71,14 @@ function ProjectsPage({ tokenProp, setProjectId }) {
                         setProjectId(project.id)
                         navigate("/task")
                     }} >
-                        <h2 style={{color: 'black', fontSize: '2em'}} >{project.name}</h2>
+                        <img src="https://placehold.co/600x400"/>
+                        <h2 style={{ color: 'whitesmoke', fontSize: '30px', textAlign: 'left' }} >{project.name}</h2>
+                        <div style={{ display: 'grid', gridTemplateColumns: '3fr .5fr', alignItems: 'center' }}>
+                            <p stye={{ fontWeight: '100' }} >Opened 8:22 AM </p>
+                            <p style={{fontSize:'35px', color:'white'}} >⋮</p>
+                        </div>
+                 
+                       
                     </div>
                 ))}
             </div>
