@@ -78,7 +78,7 @@ button {
     width: 35%;
     margin-left: auto;
     margin-right: auto;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 1fr 1fr;
     text-align:left;
     align-items:center;
     padding:20px;
@@ -88,7 +88,11 @@ button {
 .Input {
     padding:10px;
     max-width: 70%;
+    overflow: hidden;
+   
 }
+
+
 
 .Submit {
     margin-left: auto;
@@ -142,6 +146,9 @@ button {
     }
     .SideContainer{
         display:none;
+    }
+    .Input {
+        max-width: 50%;
     }
 }
 

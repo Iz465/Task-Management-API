@@ -14,6 +14,7 @@ function TaskPage({ tokenProp, projectId }) {
     const [dueDate, setDueDate] = useState("")
     const [tasks, setTasks] = useState([])
     const [taskId, setTaskId] = useState()
+    const time = new Date().toISOString().split("T")[0];
   
     useEffect(() => { 
 
@@ -80,7 +81,10 @@ function TaskPage({ tokenProp, projectId }) {
         <div>
             <AddTask addingTask={addingTask} CallAddTask={CallAddTask} setAddingTask={setAddingTask} setName={setName} setDueDate={setDueDate} />
             {project && (
-                <h1 className="Title">{project.name}</h1>
+                <h1 className="Title" title={project.name} style={{
+                    maxWidth: '50%', textAlign: 'center', overflow: 'hidden',
+                    textOverflow: 'ellipsis', 
+                }} >{project.name}</h1>
             )}
             <div className="TasksContainer">
 
@@ -98,7 +102,11 @@ function TaskPage({ tokenProp, projectId }) {
                                  
                                     <button style={{ backgroundColor: 'darkred' }} className="DarkPurpleHover"
                                         onClick={() => DeleteTask(task.id)} >🗑</button>
-                                    <p>07/10/26 ⏳</p>
+                                    { task.dueDate > time 
+                                        ? <p>{task.dueDate} ⏳</p>
+                                        : <p>{task.dueDate} 🔴</p>
+                                    }
+                                    
                                 </div>
                             )
                         ))}
@@ -118,7 +126,10 @@ function TaskPage({ tokenProp, projectId }) {
                                     <button style={{ backgroundColor: 'darkred' }} className="DarkPurpleHover"
                                         onClick={() => DeleteTask(task.id)} >🗑</button>
 
-                                    <p>07/10/26 🔴</p>
+                                    {task.dueDate > time
+                                        ? <p>{task.dueDate} ⏳</p>
+                                        : <p>{task.dueDate} 🔴</p>
+                                    }
                                 </div>    
 
                         )
@@ -175,7 +186,7 @@ function AddTask({ addingTask, CallAddTask, setAddingTask, setName, setDueDate }
 
                     <div className="IndividualFormContainer">
                         <p>Due Date</p>
-                        <input type="text" placeholder="Due Date" className="Input" onChange={(event) => setDueDate(event.target.value)} />
+                        <input type="date" placeholder="Due Date" className="Input" onChange={(event) => setDueDate(event.target.value)} />
                     </div>
 
                     <div>

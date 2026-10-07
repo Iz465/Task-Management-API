@@ -59,11 +59,6 @@ function ProjectsPage({ tokenProp, setProjectId }) {
             </div>
 
         
-      
-            
-       
-       
-
             <div className="ProjectsContainer">
       
                 {projects.map(project => (
@@ -75,7 +70,10 @@ function ProjectsPage({ tokenProp, setProjectId }) {
                         <h2 style={{ color: 'whitesmoke', fontSize: '30px', textAlign: 'left' }} >{project.name}</h2>
                         <div style={{ display: 'grid', gridTemplateColumns: '3fr .5fr', alignItems: 'center' }}>
                             <p stye={{ fontWeight: '100' }} >Opened 8:22 AM </p>
-                            <p style={{fontSize:'35px', color:'white'}} >⋮</p>
+                            <p style={{ fontSize: '35px', color: 'white' }} onClick={(e) => {
+                                e.stopPropagation()
+                                console.log("Project Options!")
+                            }} >⋮</p>
                         </div>
                  
                        

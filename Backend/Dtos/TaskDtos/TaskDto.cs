@@ -12,7 +12,7 @@ namespace TaskManagementApi.Backend.Dtos.TaskDtos
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        public DateTime DueDate { get; set; } 
+        public DateOnly DueDate { get; set; } 
 
         [Required]
         public ETasks Status { get; set; }
