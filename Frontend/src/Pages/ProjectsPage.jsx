@@ -10,6 +10,9 @@ function ProjectsPage({ tokenProp, setProjectId }) {
     const [name, setName] = useState("")
     const [projects, setProjects] = useState([])
     const navigate = useNavigate()
+    const [showProjectOptions, setShowProjectOptions] = useState(false)
+    const [top, setTop] = useState()
+    const [left, setLeft] = useState()
 
     useEffect(() => {
         console.log("Opening Project Page")
@@ -47,6 +50,13 @@ function ProjectsPage({ tokenProp, setProjectId }) {
                 setName={setName}
                 SubmitProject={SubmitProject}
             />
+      
+            <ProjectOptions
+                showProjectOptions={showProjectOptions}
+                topPos={top}
+                leftPos={left}
+           
+            />
     
             <div className="TestTitle">
                 <h1>Projects</h1>
@@ -70,9 +80,14 @@ function ProjectsPage({ tokenProp, setProjectId }) {
                         <h2 style={{ color: 'whitesmoke', fontSize: '30px', textAlign: 'left' }} >{project.name}</h2>
                         <div style={{ display: 'grid', gridTemplateColumns: '3fr .5fr', alignItems: 'center' }}>
                             <p stye={{ fontWeight: '100' }} >Opened 8:22 AM </p>
-                            <p style={{ fontSize: '35px', color: 'white' }} onClick={(e) => {
+                            <p style={{ fontSize: '35px', color: 'white', cursor: 'pointer', zIndex: '100' }} onClick={(e) => {
                                 e.stopPropagation()
-                                console.log("Project Options!")
+                                e.preventDefault()
+                                showProjectOptions === true ? setShowProjectOptions(false) : setShowProjectOptions(true)
+                                const rect = e.currentTarget.getBoundingClientRect()
+                                setTop(rect.top)
+                                setLeft(rect.left)
+                                console.log(rect.top, rect.left)
                             }} >⋮</p>
                         </div>
                  
@@ -89,7 +104,7 @@ function ProjectsPage({ tokenProp, setProjectId }) {
 export default ProjectsPage;
 
 function AddProject({ addingProject, setAddingProject, setName, SubmitProject })
-    {
+{
         return addingProject && (
             <>
                 <div className="Overlay"></div>
@@ -117,4 +132,16 @@ function AddProject({ addingProject, setAddingProject, setName, SubmitProject })
                 </div>
             </>
         )
-    }
+}
+
+function ProjectOptions({ showProjectOptions, topPos, leftPos})
+{   
+    return showProjectOptions && (
+        <div className="ProjectOptions" style={{ top: topPos, left: leftPos}}>
+            <p>Rename</p>
+            <p>Delete</p>
+            <p>Open in new tab</p>
+        </div>
+    )
+}
+

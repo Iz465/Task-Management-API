@@ -106,3 +106,14 @@
     color: whitesmoke;
        
 }
+
+.ProjectOptions {
+    
+    border-radius: 5px;
+    padding: 1%;
+    position:absolute;
+    text-align: left;
+    background-color: mediumpurple;
+   
+
+}
