@@ -57,5 +57,18 @@ namespace TaskManagementApi.Backend.Controllers
             return await _projectServices.GetProject(id);
         }
 
+        [HttpDelete("{id}")]
+        [Authorize]
+
+        public async Task<ActionResult> DeleteProject(int id)
+        {
+            var result = await _projectServices.DeleteProject(id);
+
+            if (result == EUserCreation.Incorrect)
+                return NotFound();
+
+            return Ok();
+        }
+
     }
 }

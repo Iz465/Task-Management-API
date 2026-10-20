@@ -37,3 +37,13 @@ export async function getProject(token, projectId)
         return response
 
 }
+
+export async function deleteProject(token, projectId)
+{ 
+    await fetch(`http://localhost:5239/api/projects/${projectId}`, {
+        method: 'DELETE',
+        headers: {Authorization: `Bearer ${token}`}
+    })
+
+    
+}

@@ -1,4 +1,3 @@
-
 .ProjectsContainer {
     display: flex;
     flex-wrap: wrap;
@@ -8,7 +7,6 @@
     row-gap: 5vw;
     margin-left: auto;
     margin-right: auto;
-  
 }
 
 @media (max-width: 700px) {
@@ -30,90 +28,87 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    z-index: 100;
 }
 
-.AddProjectContainer form {
-    display:contents;
-}
+    .AddProjectContainer form {
+        display: contents;
+    }
 
 .IndividualProjectContainer {
     width: 220px;
     height: 275px;
-    overflow: hidden;
+    overflow: visible;
     flex-shrink: 0;
     border-radius: 10px;
     background-color: #403676;
-  
+    position: relative;
 }
 
-.IndividualProjectContainer h2 {
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
-    min-width: 0; 
-    max-width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-   
-}
+    .IndividualProjectContainer h2 {
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+        min-width: 0;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 
-.IndividualProjectContainer p {
-    text-align: left;
-    padding-left: 5%;
+    .IndividualProjectContainer p {
+        text-align: left;
+        padding-left: 5%;
+    }
 
-}
-
-.IndividualProjectContainer img {
-    width: 220px;
-    object-fit: cover;
-
-}
-
+    .IndividualProjectContainer img {
+        width: 220px;
+        object-fit: cover;
+    }
 
 .AddProjectButton {
-  
     margin: 40px;
-
 }
 
 .ExitButton {
-   padding: 5px 10px;
+    padding: 5px 10px;
 }
 
-.ExitButton button
-{
-    display:contents;
-}
+    .ExitButton button {
+        display: contents;
+    }
 
 .TestTitle {
     padding: 2rem 1rem;
     display: flex;
     justify-content: center;
     align-items: baseline;
-   
-    
 }
 
-.TestTitle button {
-    font-size: 2em;
-    font-weight: bold;
-    border: none;
-    padding: 0;
-    width: 1.5em;
-    height: 1.5em;
-    background-color: green;
-    color: whitesmoke;
-       
-}
+    .TestTitle button {
+        font-size: 2em;
+        font-weight: bold;
+        border: none;
+        padding: 0;
+        width: 1.5em;
+        height: 1.5em;
+        background-color: green;
+        color: whitesmoke;
+    }
 
 .ProjectOptions {
-    
+    position: absolute;
+    bottom: 35px;
+    right: 0;
     border-radius: 5px;
     padding: 1%;
-    position:absolute;
     text-align: left;
     background-color: mediumpurple;
-   
+    z-index: 20;
+}
 
+
+.IndividualProjectContainer h2 {
+    font-size: 30px;
+    text-align: left;
 }

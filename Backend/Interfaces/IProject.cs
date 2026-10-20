@@ -8,5 +8,6 @@ namespace TaskManagementApi.Backend.Interfaces
         Task<EUserCreation> CreateProject(CreateProjectDto dto, int userId);
         Task<List<ProjectDto>> GetProjects(int userId);
         Task<ProjectDto> GetProject(int projectId);
+        Task<EUserCreation> DeleteProject(int projectId);
     }
 }

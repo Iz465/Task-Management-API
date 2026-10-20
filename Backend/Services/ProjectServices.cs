@@ -60,5 +60,20 @@ namespace TaskManagementApi.Backend.Services
                 Name = projectExists.Name
             };
         }
+
+        public async Task<EUserCreation> DeleteProject(int projectId)
+        {
+            var project = await _context.Projects.FindAsync(projectId);
+
+            if (project == null)
+                return EUserCreation.Incorrect;
+
+            _context.Projects.Remove(project);
+            await _context.SaveChangesAsync();
+
+
+            return EUserCreation.Created;
+        }
+     
     }
 }
