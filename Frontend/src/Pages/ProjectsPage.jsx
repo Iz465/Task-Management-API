@@ -10,27 +10,19 @@ function ProjectsPage({ tokenProp, setProjectId }) {
     const [projects, setProjects] = useState([])
     const navigate = useNavigate()
     const [currentOptions, SetCurrentOptions] = useState(null)
-    const [optionsZIndex, setOptionsZIndex] = useState(0)
+
 
     useEffect(() => {
-        console.log("Opening Project Page")
-
-        const fetchProjects = async () => 
-            SetProjects()
+      
+        SetProjects()
         
-
-        fetchProjects()
     }, [tokenProp])
 
 
     async function SetProjects() { 
 
         const response = await getProjects(tokenProp)
-
-        if (response)
-            setProjects(await response.json())
-        else
-            setProjects([])
+        setProjects(await response.json())
     }
 
 
@@ -40,7 +32,6 @@ function ProjectsPage({ tokenProp, setProjectId }) {
         
     }
 
-
     async function DeleteProject(projectId) {
       
         await deleteProject(tokenProp, projectId)
@@ -49,15 +40,15 @@ function ProjectsPage({ tokenProp, setProjectId }) {
 
 
     return (
-        <div className="">
+        <div>
             <AddProject addingProject={addingProject} setAddingProject={setAddingProject} setProjectName={setProjectName}
-                SubmitProject={SubmitProject} setOptionsZIndex={setOptionsZIndex} />
+                SubmitProject={SubmitProject} />
 
-            <div className="TestTitle">
+            <div className="Title">
                 <h1>Projects</h1>
 
-                <button className="GreyHover AddProjectButton"
-                    onClick={() => { setAddingProject(true), SetCurrentOptions(null), setOptionsZIndex('auto') }} >
+                <button className="GreyHover GreenButton MediumButton"
+                    onClick={() => { setAddingProject(true), SetCurrentOptions(null) }} >
                     +
                 </button>
             </div>
@@ -72,10 +63,10 @@ function ProjectsPage({ tokenProp, setProjectId }) {
                         <img src="https://placehold.co/600x400" />
                         <h2> {project.name}</h2>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '3fr .5fr', alignItems: 'center' }} >
-                            <p style={{ fontWeight: '100' }}> Opened 8:22 AM </p>
+                        <div className="ProjectDetails">
+                            <p> Opened 8:22 AM </p>
 
-                            <p style={{fontSize: '35px', color: 'white',cursor: 'pointer' }}
+                            <p style={{fontSize: '30px', cursor: 'pointer' }}
                                 onClick={(e) => { e.stopPropagation(), e.preventDefault(), SetCurrentOptions(
                                     currentOptions === project.id ? null : project.id
                                 )}} >
@@ -85,7 +76,7 @@ function ProjectsPage({ tokenProp, setProjectId }) {
                         {currentOptions === project.id && (
                             <div className="ProjectOptions" onClick={(e) => e.stopPropagation()} >
                                 <p>Rename</p>
-                                <p onClick={() => DeleteProject(project.id)} >Delete</p>
+                                <p onClick={() => DeleteProject(project.id) } >Delete</p>
                                 <p>Open in new tab</p>
                             </div>
                         )}
@@ -98,7 +89,7 @@ function ProjectsPage({ tokenProp, setProjectId }) {
 
 export default ProjectsPage
 
-function AddProject({ addingProject, setAddingProject, setProjectName, SubmitProject, setOptionsZIndex })
+function AddProject({ addingProject, setAddingProject, setProjectName, SubmitProject })
 {
     return addingProject && (
         <>
@@ -109,11 +100,11 @@ function AddProject({ addingProject, setAddingProject, setProjectName, SubmitPro
                 <div className="AddTaskTitleClose">
                     <h2>Add Project</h2>
                     <button className="ExitButton DarkPurpleHover"
-                        onClick={() => {setAddingProject(false), setOptionsZIndex(0) }} > X
+                        onClick={() => {setAddingProject(false) }} > X
                     </button>
                 </div>
 
-                <form onSubmit={(event) => { event.preventDefault(), SubmitProject(), setOptionsZIndex(0), setAddingProject(false) }} >
+                <form onSubmit={(event) => { event.preventDefault(), SubmitProject(), setAddingProject(false) }} >
                     <div className="IndividualFormContainer">
                         <p>Title</p>
                         <input type="text" placeholder="Task" className="Input" onChange={(event) => setProjectName(event.target.value)} />

@@ -14,17 +14,14 @@ function CreateAccountPage({ setTokenProp }) {
 
     async function CreateUser() {
 
-        console.log(`Username: ${username}`)
         const response = await createUser(username, password, email)
        
-
         if (response.ok) { 
 
             const token = await response.text()
             console.log(`token: ${token}`)
             
             setTokenProp(token)
-            setMessage("Account Created") 
             navigate("/projects")
         }
           

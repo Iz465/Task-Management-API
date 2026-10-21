@@ -26,8 +26,8 @@
     padding: 0;
     width: 1.5em;
     height: 1.5em;
-    background-color: #16171d;
-    color: whitesmoke;
+
+
 }
 
 .IndividualTaskContainer {
@@ -61,11 +61,7 @@
     justify-content: space-evenly;
 }
 
-.AddTaskContainer form { 
-    display: contents;
- 
 
-}
 
 .AddTaskTitleClose {
     display: flex;
@@ -102,13 +98,6 @@
     text-overflow: ellipsis;
 }
 
-
-.IndividualTasks button {
-    padding: 5px 10px;
-    margin: 5px;
-    font-size: 20px;
-    
-}
 
 .IndividualTasks:hover {
     border: solid orange 4px;

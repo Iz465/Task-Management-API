@@ -18,9 +18,8 @@ function LoginPage({setTokenProp}) {
 
         if (result.ok)
         {
-            setMessage(`Welcome Back ${username}`)
+       
             const token = await result.text()
-
             setTokenProp(token)
             console.log(`Token is: ${token}`)
 

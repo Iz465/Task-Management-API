@@ -31,84 +31,53 @@
     z-index: 100;
 }
 
-    .AddProjectContainer form {
-        display: contents;
-    }
+.AddProjectContainer form {
+    display: contents;
+}
 
 .IndividualProjectContainer {
     width: 220px;
     height: 275px;
     overflow: visible;
-    flex-shrink: 0;
     border-radius: 10px;
     background-color: #403676;
     position: relative;
 }
 
-    .IndividualProjectContainer h2 {
-        margin: 0;
-        padding: 20px;
-        box-sizing: border-box;
-        min-width: 0;
-        max-width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    .IndividualProjectContainer p {
-        text-align: left;
-        padding-left: 5%;
-    }
-
-    .IndividualProjectContainer img {
-        width: 220px;
-        object-fit: cover;
-    }
-
-.AddProjectButton {
-    margin: 40px;
+.IndividualProjectContainer h2 {
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 30px;
+    text-align: left;
 }
 
-.ExitButton {
-    padding: 5px 10px;
+.IndividualProjectContainer p {
+    text-align: left;
+    padding-left: 5%;
 }
 
-    .ExitButton button {
-        display: contents;
-    }
-
-.TestTitle {
-    padding: 2rem 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
+.IndividualProjectContainer img {
+    width: 220px;
+    object-fit: cover;
 }
 
-    .TestTitle button {
-        font-size: 2em;
-        font-weight: bold;
-        border: none;
-        padding: 0;
-        width: 1.5em;
-        height: 1.5em;
-        background-color: green;
-        color: whitesmoke;
-    }
 
 .ProjectOptions {
     position: absolute;
-    bottom: 35px;
+    top: 0;
     right: 0;
     border-radius: 5px;
-    padding: 1%;
+    padding: 2%;
     text-align: left;
     background-color: mediumpurple;
-    z-index: 20;
+ 
 }
 
 
-.IndividualProjectContainer h2 {
-    font-size: 30px;
-    text-align: left;
+.ProjectDetails {
+    display: grid;
+    grid-template-columns: 3fr .5fr;
+    align-items: center;
 }

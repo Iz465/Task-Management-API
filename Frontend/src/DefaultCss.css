@@ -37,6 +37,9 @@ button {
     font-weight: 1000;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: first baseline;
 }
 
 .PageContainer {
@@ -55,6 +58,31 @@ button {
     border: none;
     font-weight: 100;
     color: whitesmoke;
+}
+
+.MediumButton {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 0;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 40px;
+}
+
+.SmallButton {
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 20px;
+}
+
+.GreenButton {
+    background-color: green;
+    color: whitesmoke;
+}
+
+.RedButton {
+    background-color: darkred;
+ 
 }
 
 .GreyHover:hover {
